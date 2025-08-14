@@ -1,0 +1,423 @@
+
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>人人都是創造者，用 AI 打造客製化軟體｜活動介紹</title>
+<meta name="description" content="一場為設計師、創作者、學生與創業者設計的 AI 主題活動：AI 完成銷售頁、MVP 發想實作，現場帶你完成並部署。">
+<style>
+  :root{
+    --bg:#0b0f1a;
+    --card:#121827;
+    --muted:#94a3b8;
+    --text:#e6edf7;
+    --brand:#5b9dff;
+    --brand-2:#8f63ff;
+    --accent:#22d3ee;
+    --ring: 0 0 0 3px rgba(91,157,255,.25);
+    --radius:14px;
+  }
+  *{box-sizing:border-box}
+  html,body{height:100%}
+  body{
+    margin:0;
+    font-family: ui-sans-serif, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Noto Sans TC", "PingFang TC", "Helvetica Neue", Arial, "Apple Color Emoji","Segoe UI Emoji";
+    background: radial-gradient(1200px 600px at 70% -10%, rgba(91,157,255,.15), transparent 60%),
+                radial-gradient(900px 500px at 10% 110%, rgba(143,99,255,.18), transparent 50%),
+                var(--bg);
+    color:var(--text);
+    line-height:1.65;
+  }
+  a{color:inherit;text-decoration:none}
+  .container{width:min(1120px, 92vw); margin-inline:auto}
+  /* Header */
+  header{
+    position:sticky; top:0; z-index:100;
+    backdrop-filter: saturate(140%) blur(8px);
+    background: rgba(11,15,26,.6);
+    border-bottom:1px solid rgba(255,255,255,.06);
+  }
+  .nav{
+    display:flex; align-items:center; justify-content:space-between;
+    padding:14px 0;
+  }
+  .brand{
+    display:flex; align-items:center; gap:10px; font-weight:700; letter-spacing:.2px;
+  }
+  .brand-badge{
+    width:28px; height:28px; border-radius:8px;
+    background: linear-gradient(135deg, var(--brand), var(--brand-2));
+    display:grid; place-items:center; font-size:14px; font-weight:800;
+    box-shadow: 0 6px 20px rgba(99,132,255,.35);
+  }
+  .nav-desktop{display:flex; gap:22px; align-items:center}
+  .nav-desktop a{color:var(--muted)}
+  .nav-desktop a:hover{color:var(--text)}
+  .cta-sm{
+    padding:9px 14px; border-radius:10px; background:rgba(32, 40, 62, .6);
+    border:1px solid rgba(255,255,255,.08); color:var(--text)
+  }
+  /* Hamburger trigger (hidden on desktop) */
+  /* Menu 文字樣式 */
+.hamburger{
+  display:none; 
+  padding: 0 14px;
+  height: 40px;
+  border-radius: 10px;
+  border: 1px solid rgba(255,255,255,.1);
+  background: rgba(18,24,39,.7);
+  color: #e5edff;
+  font-weight: 700;
+  letter-spacing: .5px;
+  cursor: pointer;
+}
+@media (max-width: 720px){
+  .hamburger{display:flex; align-items:center; justify-content:center;}
+}
+
+
+  /* Hero */
+  .hero{padding:72px 0 36px}
+  .hero h1{
+    font-size: clamp(28px, 4vw, 46px); line-height:1.1; margin:0 0 12px;
+    letter-spacing:.3px;
+  }
+  .hero p{color:var(--muted); margin:0 0 26px}
+  .hero-card{
+    margin-top:22px; padding:18px; border-radius:var(--radius);
+    background: linear-gradient(180deg, rgba(255,255,255,.06), rgba(255,255,255,.02));
+    border:1px solid rgba(255,255,255,.08);
+  }
+
+  /* CTA (primary) */
+  .cta{
+    --padY:14px; --padX:22px;
+    display:inline-flex; align-items:center; gap:10px;
+    padding: var(--padY) var(--padX);
+    border-radius: 14px;
+    background: linear-gradient(135deg, var(--brand), var(--brand-2));
+    color:white; font-weight:700; letter-spacing:.2px;
+    box-shadow:
+      0 12px 22px rgba(99,132,255,.35),
+      inset 0 0 0 1px rgba(255,255,255,.15);
+    transition: transform .18s ease, box-shadow .2s ease;
+  }
+  .cta:hover{ transform: translateY(-1px); box-shadow:
+      0 16px 30px rgba(99,132,255,.45),
+      inset 0 0 0 1px rgba(255,255,255,.2); }
+  .cta:focus-visible{ outline:none; box-shadow: var(--ring),
+      0 16px 30px rgba(99,132,255,.45), inset 0 0 0 1px rgba(255,255,255,.25) }
+  .cta .arrow{display:inline-block; transition: transform .2s ease}
+  .cta:hover .arrow{ transform: translateX(4px) }
+
+  /* Secondary CTA (coupon copy) */
+  .coupon{
+    display:inline-flex; align-items:center; gap:8px; margin-left:14px;
+    padding:12px 14px; border-radius:12px;
+    background: rgba(34,211,238,.12);
+    border:1px solid rgba(34,211,238,.35);
+    color:#bff6ff; font-weight:600;
+  }
+  .coupon kbd{
+    background: rgba(255,255,255,.08); padding:6px 8px; border-radius:8px; font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, "Liberation Mono", monospace;
+  }
+
+  /* Sections */
+  section{padding:42px 0; border-top:1px solid rgba(255,255,255,.06)}
+  h2{font-size: clamp(22px, 3vw, 28px); margin:0 0 18px}
+  .muted{color:var(--muted)}
+  .grid{
+    display:grid; gap:18px;
+    grid-template-columns: repeat(12, 1fr);
+  }
+  .span-6{grid-column: span 6}
+  .span-4{grid-column: span 4}
+  .card{
+    background:var(--card); border:1px solid rgba(255,255,255,.08);
+    border-radius: var(--radius); padding:18px;
+  }
+  .icon{
+    width:38px; height:38px; border-radius:10px;
+    background:linear-gradient(135deg, rgba(91,157,255,.25), rgba(143,99,255,.28));
+    display:grid; place-items:center; font-weight:800
+  }
+  ul.clean{padding-left:1.1rem; margin:0}
+  ul.clean li{margin:.3rem 0}
+
+  /* Info list */
+  .info-list{display:grid; gap:12px}
+  .info-item{display:flex; gap:12px; align-items:flex-start}
+  .info-item b{white-space:nowrap; min-width:3rem}
+
+  /* Speaker */
+  .speaker{
+    display:flex; gap:18px; align-items:flex-start; flex-wrap:wrap
+  }
+  .avatar{
+    width:72px; height:72px; border-radius:16px;
+    background: linear-gradient(135deg, var(--brand), var(--brand-2));
+    display:grid; place-items:center; font-weight:800
+  }
+
+  /* Sticky mobile CTA */
+  .sticky-cta{
+    position:fixed; inset:auto 0 16px 0; z-index:60;
+    display:none; justify-content:center;
+  }
+  .sticky-cta a{
+    width:min(680px, 92vw); text-align:center;
+    padding:14px 20px; border-radius:14px;
+    background:linear-gradient(135deg, var(--brand), var(--brand-2));
+    color:#fff; font-weight:800; box-shadow:0 12px 28px rgba(99,132,255,.4);
+  }
+
+  /* Footer */
+  footer{padding:36px 0 60px; color:var(--muted); text-align:center}
+
+  /* Mobile menu (panel + overlay) */
+  .mobile-overlay{
+    position:fixed; inset:0; background:rgba(2,6,23,.5); backdrop-filter: blur(2px);
+    display:none; z-index:110;
+  }
+  .mobile-panel{
+    position:fixed; inset:0 0 auto auto; width:86vw; max-width:360px; height:100%;
+    background:rgba(15,18,30,.96); border-left:1px solid rgba(255,255,255,.08);
+    transform: translateX(100%); transition: transform .22s ease; z-index:120;
+    padding:18px;
+    display:flex; flex-direction:column; gap:12px; border-top-left-radius:16px;
+  }
+  .mobile-panel.open{ transform: translateX(0) }
+  .mobile-close{
+    align-self:flex-end; width:42px; height:42px; border-radius:10px;
+    border:1px solid rgba(255,255,255,.1); background:rgba(18,24,39,.7); color:#e5edff; font-weight:800
+  }
+  .mobile-links a{
+    display:block; padding:12px 10px; border-radius:10px; color:#dbe7ff
+  }
+  .mobile-links a:hover{ background:rgba(255,255,255,.06) }
+
+  /* Responsive */
+  @media (max-width: 1024px){
+    .span-6{grid-column: span 12}
+    .span-4{grid-column: span 6}
+  }
+  @media (max-width: 720px){
+    .nav-desktop{ display:none }
+    .hamburger{ display:flex }
+    .sticky-cta{ display:flex }
+    .span-4{grid-column: span 12}
+    .coupon{display:block; margin:10px 0 0}
+  }
+</style>
+</head>
+<body>
+  <!-- Mobile overlay & panel -->
+  <div class="mobile-overlay" id="mobileOverlay" hidden></div>
+  <nav class="mobile-panel" id="mobilePanel" aria-hidden="true" aria-label="行動選單">
+    <button class="mobile-close" id="mobileClose" aria-label="關閉選單">✕</button>
+    <div class="mobile-links" id="mobileLinks">
+      <a href="#about">活動簡介</a>
+      <a href="#highlights">活動亮點</a>
+      <a href="#info">活動資訊</a>
+      <a href="#speaker">講師介紹</a>
+      <a href="#register" class="cta" style="justify-content:center">立即報名 <span class="arrow">↗</span></a>
+    </div>
+  </nav>
+
+  <header>
+    <div class="container nav">
+      <div class="brand">
+        <div class="brand-badge">AI</div>
+        <span>人人都是創造者</span>
+      </div>
+
+      <nav class="nav-desktop" aria-label="主選單">
+        <a href="#about">活動簡介</a>
+        <a href="#highlights">活動亮點</a>
+        <a href="#info">活動資訊</a>
+        <a href="#speaker">講師介紹</a>
+        <a href="#register" class="cta-sm">立即報名</a>
+      </nav>
+
+<!-- 手機選單按鈕 -->
+<button class="hamburger" id="hamburger" aria-label="開啟行動選單" aria-controls="mobilePanel" aria-expanded="false">
+  Menu
+</button>
+
+    </div>
+  </header>
+
+  <main>
+    <!-- Hero -->
+    <section class="hero">
+      <div class="container">
+        <div class="hero-card">
+          <h1>人人都是創造者，用 AI 打造客製化軟體</h1>
+          <p class="muted">聚焦兩件事：<b>AI 完成銷售頁</b> 與 <b>MVP 發想實作</b>。不需要程式基礎，現場一步步帶你做完，並教你用 Zeabur 部署上線。</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- About -->
+    <section id="about">
+      <div class="container grid">
+        <div class="span-6">
+          <h2>活動簡介</h2>
+          <p class="muted">
+            這不是一場只聽概念的分享。我們會把抽象的 AI 能力，變成你手上的一頁式銷售頁作品，並引導你把腦中的點子，快速收斂成可驗證的 MVP。
+          </p>
+        </div>
+        <div class="span-6 card">
+          <b>你將帶走：</b>
+          <ul class="clean">
+            <li>一份能公開展示的銷售頁（含部署）</li>
+            <li>一套「從想法到上線」的操作流程</li>
+            <li>把 AI 當力氣用，而不是口號的實作經驗</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- Highlights -->
+    <section id="highlights">
+      <div class="container">
+        <h2>活動亮點</h2>
+        <div class="grid">
+          <div class="span-4 card">
+            <div class="icon">⚡</div>
+            <h3>無需程式基礎</h3>
+            <p class="muted">AI 工具搭配 Zeabur，一步步部署到線上。</p>
+          </div>
+          <div class="span-4 card">
+            <div class="icon">🛠️</div>
+            <h3>實作導向</h3>
+            <p class="muted">從靈感 → 架構 → 成品，現場完成。</p>
+          </div>
+          <div class="span-4 card">
+            <div class="icon">🌱</div>
+            <h3>友善入門</h3>
+            <p class="muted">設計師、創作者、學生都能跟上。</p>
+          </div>
+          <div class="span-4 card">
+            <div class="icon">📚</div>
+            <h3>案例分享</h3>
+            <p class="muted">展示 AI 在創作與開發的實際應用。</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Info -->
+    <section id="info">
+      <div class="container grid">
+        <div class="span-6">
+          <h2>活動資訊</h2>
+          <div class="info-list">
+            <div class="info-item"><b>日期</b><div>2025 年 9 月 6 日（六）</div></div>
+            <div class="info-item"><b>時間</b><div>14:00 – 16:00</div></div>
+            <div class="info-item"><b>地點</b><div>台中 Monospace（403台中市西區臺灣大道二段2號16樓之二）</div></div>
+            <div class="info-item"><b>對象</b><div>不限背景，歡迎對 AI / 創作 / 產品開發有興趣者</div></div>
+          </div>
+        </div>
+        <div class="span-6 card">
+          <b>適合對象</b>
+          <ul class="clean">
+            <li>想用 AI 快速做出能展示的作品的人</li>
+            <li>設計師／創作者：希望把想法變成可測試的原型</li>
+            <li>學生／新手：想入門產品開發與部署流程</li>
+            <li>想把 Side Project 變成 MVP 的創業者</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+    <!-- Speaker -->
+    <section id="speaker">
+      <div class="container">
+        <h2>講師介紹</h2>
+        <div class="speaker card">
+          <div class="avatar">Bv</div>
+          <div>
+            <p><b>阮柏燁</b>（Brickverse 創辦人）</p>
+            <p class="muted">6 年教學經驗、推廣 Vibe Coding。擅長把抽象技術轉成好上手的實作路徑，帶你把想法做成能上線的東西。</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Register -->
+    <section id="register">
+      <div class="container card" style="text-align:center">
+        <h2 style="margin-bottom:6px">現在行動，名額有限</h2>
+        <p class="muted" style="margin-top:0">使用優惠碼可享折扣，現場完成還有下一場活動折扣碼。</p>
+        <div style="display:flex; gap:12px; justify-content:center; flex-wrap:wrap">
+          <a class="cta" href="https://www.accupass.com/go/vibecode" target="_blank" rel="noopener">立即報名 <span class="arrow">→</span></a>
+          <button id="copyCoupon" class="coupon" type="button">專屬優惠碼 <kbd>BRICKVERSE150</kbd>(複製)</button>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Sticky CTA for mobile -->
+  <div class="sticky-cta">
+    <a href="https://www.accupass.com/go/vibecode" target="_blank" rel="noopener" aria-label="立即報名">立即報名 · 名額有限</a>
+  </div>
+
+  <footer>
+    <div class="container">© 2025 Useful Vibecode</div>
+  </footer>
+
+<script>
+  // === Mobile menu ===
+  const hamburger = document.getElementById('hamburger');
+  const panel = document.getElementById('mobilePanel');
+  const overlay = document.getElementById('mobileOverlay');
+  const closeBtn = document.getElementById('mobileClose');
+  const links = document.querySelectorAll('#mobileLinks a');
+
+  const openMenu = () => {
+    panel.classList.add('open');
+    overlay.style.display = 'block';
+    overlay.hidden = false;
+    panel.setAttribute('aria-hidden', 'false');
+    hamburger.setAttribute('aria-expanded','true');
+    // prevent body scroll on mobile
+    document.documentElement.style.overflow = 'hidden';
+    document.body.style.overflow = 'hidden';
+    // focus first link for a11y
+    setTimeout(()=> links[0]?.focus(), 10);
+  };
+  const closeMenu = () => {
+    panel.classList.remove('open');
+    overlay.style.display = 'none';
+    overlay.hidden = true;
+    panel.setAttribute('aria-hidden', 'true');
+    hamburger.setAttribute('aria-expanded','false');
+    document.documentElement.style.overflow = '';
+    document.body.style.overflow = '';
+    hamburger.focus();
+  };
+
+  hamburger.addEventListener('click', openMenu);
+  closeBtn.addEventListener('click', closeMenu);
+  overlay.addEventListener('click', closeMenu);
+  document.addEventListener('keydown', (e)=>{ if(e.key === 'Escape') closeMenu(); });
+  links.forEach(a => a.addEventListener('click', closeMenu));
+
+  // === Coupon copy ===
+  function copy(text){
+    navigator.clipboard?.writeText(text).then(()=>{
+      alert('已複製優惠碼：' + text);
+    }).catch(()=>{
+      // fallback
+      const ta = document.createElement('textarea');
+      ta.value = text; document.body.appendChild(ta); ta.select();
+      try { document.execCommand('copy'); alert('已複製優惠碼：' + text); }
+      finally { document.body.removeChild(ta); }
+    });
+  }
+  document.getElementById('copyCoupon').addEventListener('click', ()=>copy('BRICKVERSE150'));
+</script>
+</body>
+</html>
